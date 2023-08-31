@@ -70,10 +70,9 @@
 |5|09-03|BinarySearchTree|Search|❌|❌|❌|❌|
 |5|09-03|BinarySearchTree|Delete|❌|❌|❌|❌|
 |5|09-03|BinarySearchTree|Change|❌|❌|❌|❌|
-
----
-
 |6|09-05|RedBlackTree|Add|❌|❌|❌|❌|
 |6|09-05|RedBlackTree|Search|❌|❌|❌|❌|
 |6|09-05|RedBlackTree|Delete|❌|❌|❌|❌|
 |6|09-05|RedBlackTree|Change|❌|❌|❌|❌|
+
+---
