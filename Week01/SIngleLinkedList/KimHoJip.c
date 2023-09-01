@@ -42,6 +42,30 @@ void Add(Node *node, int data){ // 여기서 들어오는 node는 처음 head를
     }
 }
 
+void Insert(Node *node, int idx, int data){ // 사이즈 2에 index 1, 3을 넣는다고하면
+    if(sizeOf(node)-1 >= idx && idx >= 0){
+        Node *cur = node; //헤드상태
+
+        while(idx > 0){
+            cur = cur->next; // 인덱스0부터 시작
+            idx--;
+        }
+        Node *newNode = malloc(sizeof(Node));
+        Node *tmpNode;
+        tmpNode = cur->next; // insert할 위치의 index
+
+        newNode->data = data;
+        cur->next = newNode;
+        newNode->next = tmpNode;
+        
+        
+    }else if(sizeOf(node)-1 < idx){
+        Add(node, data);
+    }else{
+        printf("Can't insert index. please check the index.\n");
+    }
+}
+
 int Get(Node *node, int idx){ // 예로 idx = 2이라면
     if(sizeOf(node)-1 >= idx && idx >= 0){
         Node *cur = node->next; // 다음것을 가리키고있음 cur이
@@ -50,7 +74,6 @@ int Get(Node *node, int idx){ // 예로 idx = 2이라면
             cur = cur->next;
             idx--;
         }
-        printf("%d\n", cur->data);
         return cur->data;    
 
     }else{
@@ -103,14 +126,18 @@ int main() {
     Add(list1, 1);
     Add(list1, 2);
     Add(list1, 3);
-    size = sizeOf(list1);
-    printf("%d\n", size);
-    Get(list1, 2);
-    Set(list1, 1, 5); // 2에서 5로 바뀌어야함
-    Get(list1, 1); // 5가 나오면 정상
+    for(int i = 0; i<sizeOf(list1); i++){
+        printf("%d ", Get(list1, i));
+    }
+    printf("\n");
+    printf("size : %d\n", sizeOf(list1));
 
-    Delete(list1, 2);
-    printf("%d", Get(list1, 1)); // 3이 나오면 정상
+    Insert(list1, 1, 4);
+    for(int i = 0; i<sizeOf(list1); i++){
+        printf("%d ", Get(list1, i));
+    }
+    printf("\n");
+    printf("size : %d\n", sizeOf(list1));
 
     return 0;
 }
