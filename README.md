@@ -45,11 +45,11 @@
 ---
 |No|기한|자료구조명|기능|김초원|김호집|이소정|팀 리뷰
 |:-:|------|-------|:-----:|:-----:|:-----:|:-----:|:-----:|
-|1|09-01|SingleLinkedList|Add|❌|✅|❌|❌|
-|1|09-01|SingleLinkedList|Get|❌|✅|❌|❌|
-|1|09-01|SingleLinkedList|Set|❌|✅|❌|❌|
-|1|09-01|SingleLinkedList|Delete|❌|✅|❌|❌|
-|1|09-01|SingleLinkedList|Size|❌|✅|❌|❌|
+|1|09-01|SingleLinkedList|Add|❌|❌|❌|❌|
+|1|09-01|SingleLinkedList|Get|❌|❌|❌|❌|
+|1|09-01|SingleLinkedList|Set|❌|❌|❌|❌|
+|1|09-01|SingleLinkedList|Delete|❌|❌|❌|❌|
+|1|09-01|SingleLinkedList|Size|❌|❌|❌|❌|
 |2|09-01|DoubleLinkedList|Add|❌|❌|❌|❌|
 |2|09-01|DoubleLinkedList|Get|❌|❌|❌|❌|
 |2|09-01|DoubleLinkedList|Delete|❌|❌|❌|❌|
