@@ -7,11 +7,19 @@ typedef struct Node{
     int data;
 }Node;
 
-int sizeOf(Node *node){
-    int cnt = 0;
-    Node *cur = node->next; // 첫번째 노드 = head이므로, cur = 0번 인덱스
+Node* createNode(int data){
+    Node *newNode = malloc(sizeof(Node));
+    newNode->data = data;
+    newNode->next = NULL;
+    newNode->prev = NULL;
+    return newNode;
+}
 
-    while(cur != NULL){
+int sizeOf(Node *head){
+    int cnt = 0;
+    Node *cur = head->next; // 첫번째 노드 = head이므로, cur = 0번 인덱스
+
+    while(cur->next != NULL){
         cur = cur->next; 
         cnt++; 
     }
@@ -19,62 +27,137 @@ int sizeOf(Node *node){
     return cnt;
 }
 
-void Add(Node *node, int data){
-    Node *newNode = malloc(sizeof(Node));
-    if(sizeOf(node) == 0){
+void Add(Node *head, Node *tail, int data, int *count){
 
-        newNode->next = NULL;
-        newNode->prev = node;
-        newNode->data = data;
-        node->next = newNode;
+    Node *newNode = createNode(data);
 
-    }else{
+    Node *prev = tail->prev;
 
-        Node *cur = node; // 헤드
-        while(cur->next != NULL){
-            cur = cur->next;
-        }
-        //cur->next가 null인상태로 왔음. 즉 cur의 next로 무언가 올 수 있다는것임.
-        newNode->next = NULL;
-        newNode->prev = cur;
-        newNode->data = data;
-        cur->next = newNode;
+    prev->next = newNode;
+    newNode->prev = prev;
 
-    }
+    newNode->next = tail;
+    tail->prev = newNode;
+
+    *count += 1;
 }
 
 
-int Get(Node *node, int idx){
-    if(idx <= sizeOf(node)-1 && idx >= 0){ // index의 위치가 정상적으로 node의 length범위내에 들어와있다면, index가 음수가 아니라면
-        if((float)(sizeOf(node)-1)/2 >= idx){ // idx가 중앙보다 왼쪽에있거나 같다면
-            Node *cur = node->next;
-            while(idx >= 0){
+int Get(Node *head, Node *tail, int idx, int *count){
+    if( *count - 1 > idx && idx >= 0){ // length내에 idx가 들어가있다면 (정상적인 index를 호출한다면)
+        if((float)(*count-1) / 2 <= idx){ // index가 길이 중앙에서 왼쪽에 위치하여 head와 거리가 가깝다면
+            Node *cur = head->next;
+            
+            while(idx > 0){
+                cur = cur->next;
+                idx -= 1;
+            }
+            return cur->data;
+        }else{
+            Node *cur = tail->prev;
+
+            while(idx > 0){
+                cur = cur->prev;
+                idx -= 1;
+            }
+            return cur->data;
+        }
+    }else{ // 그렇지않고 정상적인 index를 호출하지 않는다면
+        printf("Can't find the index {index : %d}. Please check your index.\n", idx);
+        return -1;
+    }
+}
+
+void Set(Node *head, Node *tail, int idx, int data, int *count){
+    if( *count - 1 > idx && idx >= 0){ // length내에 idx가 들어가있다면 (정상적인 index를 호출한다면)
+        if((float)(*count-1) / 2 <= idx){ // index가 길이 중앙에서 왼쪽에 위치하여 head와 거리가 가깝다면
+            Node *cur = head->next;
+            
+            while(idx > 0){
+                cur = cur->next;
+                idx -= 1;
+            }
+            cur->data = data;
+        }else{
+            Node *cur = tail->prev;
+
+            while(idx > 0){
+                cur = cur->prev;
+                idx -= 1;
+            }
+            cur->data = data;
+        }
+    }else{ // 그렇지않고 정상적인 index를 호출하지 않는다면
+        printf("Can't find the index {index : %d}. Please check your index.\n", idx);
+    }
+}
+
+void Delete(Node *head, Node *tail, int idx, int *count){
+    if( *count - 1 > idx && idx >= 0){ // 문제가 없다면(length내에 idx가 들어있다면)
+        if((float)((*count -1) / 2) <= idx) { // index가 length기준 나누기 2 해서 왼쪽(head)와 가까이 있거나 가운데라면
+            Node *cur = head->next; // head의 next부터 시작.(head부터 시작하게되면 head노드부터 탐색을하게되므로 안됨. (head를 null이라고 생각하고있어야함))
+
+            while(idx > 0){
                 cur = cur->next;
                 idx--;
+            }
+            Node *prev = cur->prev; // cur의 앞노드를 tmp화
+            Node *next = cur->next;
+            prev->next = next;
+            next->prev = prev;
+
+            free(cur);
+
+        }else{ // tail과 가까이있다면
+            Node *cur = tail->prev;
+            while(idx > 0){
+                cur = cur->prev;
+                idx--;
+            }
+
+            Node *prev = cur->prev; // cur의 앞노드를 tmp화
+            Node *next = cur->next;
+            prev->next = next;
+            next->prev = prev;
+
+            free(cur);
+            *count -= 1;
         }
-        else{
-            Node *cur = node->prev;
-        }
+    }else{ // idx가 정상범주에서 벗어나있다면
+        printf("Can't find the index {index : %d}. Please check your index.\n", idx);
     }
-}
-
-void Set(Node *node, int idx, int data){
-
-}
-
-void Delete(Node *node, int idx){
+    
 
 }
 
 int main(){
-    Node *list = malloc(sizeof(Node));
-    list->next = NULL;
-    list->prev = NULL;
 
-    Add(list, 1);
-    Add(list, 2);
-    Add(list, 3);
-    printf("%d\n", sizeOf(list));
+    int length = 0;
+
+    Node *head = createNode(0); // head의 Node 생성(prev, next = NULL(아무도 참조하고있지않음))
+    Node *tail = createNode(0); // tail또한 마찬가지.
+    head->next = tail; // head와 tail 서로 참조
+    tail->prev = head;
+    printf("%d\n", sizeOf(head)); // 현재 head(LinkedList)에 Node가 들어가있는지.
+
+    Add(head, tail, 1, &length);
+
+    printf("%d %d\n", sizeOf(head), length);
+
+    Add(head, tail, 2, &length);
+
+    printf("%d %d\n", sizeOf(head), length);
+
+    Add(head, tail, 3, &length);
+    printf("%d\n", sizeOf(head));
+
+    Delete(head, tail, 1, &length); // 정상작동
+    printf("%d\n", sizeOf(head));
+
+    printf("%d\n", Get(head, tail, 1, &length)); // 3이 출력되어야 함
+
+    Set(head, tail, 1, 6, &length);
+    printf("%d\n", Get(head, tail, 1, &length));
 
     return 0;
 }
