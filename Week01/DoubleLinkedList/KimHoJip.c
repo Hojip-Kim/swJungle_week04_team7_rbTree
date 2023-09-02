@@ -43,7 +43,7 @@ int Get(Node *head, Node *tail, int idx, int *count){
             return cur->data;
         }else{
             Node *cur = tail->prev;
-
+            idx = *count-idx;
             while(idx > 0){
                 cur = cur->prev;
                 idx -= 1;
@@ -137,15 +137,17 @@ int main(){
     printf("%d\n", length);
 
     Add(head, tail, 3, &length);
+    Add(head, tail, 4, &length);
+    Add(head, tail, 5, &length);
     printf("%d\n", length);
 
     Delete(head, tail, 1, &length); // 정상작동
     printf("%d\n", length);
 
-    printf("%d\n", Get(head, tail, 1, &length)); // 3이 출력되어야 함
+    printf("%d\n", Get(head, tail, 3, &length)); // 3이 출력되어야 함
 
     Set(head, tail, 1, 6, &length);
-    printf("%d\n", Get(head, tail, 1, &length));
+    printf("%d\n", Get(head, tail, 2, &length));
 
     return 0;
 }
