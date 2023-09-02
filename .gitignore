@@ -1,7 +1,6 @@
 # vscode setting
 .vscode/
-
-/sojeong-test/
+sojeong-test/
 
 # Ignore all
 *
