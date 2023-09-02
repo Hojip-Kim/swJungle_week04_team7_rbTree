@@ -157,7 +157,7 @@ node *get_node(int idx, node *list)
 
 int main()
 {
-  node *list; // head node
+  node *list = NULL; // 필수!!!!
 
   while (1)
   {

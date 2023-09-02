@@ -261,7 +261,7 @@ int size_list(node *list)
 int main()
 {
   // create list
-  node *list;
+  node *list = NULL; // 필수!!!!
 
   // input sequence
   int n;
