@@ -350,6 +350,7 @@ void inorder(node_t *root, key_t *arr, int *idx, int n) {
   if (*idx == n) {
     return;
   }
+  // *(arr + (*idx)++) = root->key;
   inorder(root->left, arr, idx, n);
   *(arr + (*idx)++) = root->key;
   inorder(root->right, arr, idx, n);
