@@ -46,14 +46,14 @@
 ---
 |No|기한|자료구조명|기능|김초원|김호집|이소정|팀 리뷰
 |:-:|------|-------|:-----:|:-----:|:-----:|:-----:|:-----:|
-|1|09-01|SingleLinkedList|Add|❌|❌|❌|✅|
-|1|09-01|SingleLinkedList|Get|❌|❌|❌|✅|
-|1|09-01|SingleLinkedList|Set|❌|❌|❌|✅|
-|1|09-01|SingleLinkedList|Delete|❌|❌|❌|✅|
-|1|09-01|SingleLinkedList|Size|❌|❌|❌|✅|
-|2|09-01|DoubleLinkedList|Add|❌|❌|❌|❌|
-|2|09-01|DoubleLinkedList|Get|❌|❌|❌|❌|
-|2|09-01|DoubleLinkedList|Delete|❌|❌|❌|❌|
+|1|09-01|SingleLinkedList|Add|❌|✅|❌|❌|
+|1|09-01|SingleLinkedList|Get|❌|✅|❌|❌|
+|1|09-01|SingleLinkedList|Set|❌|✅|❌|❌|
+|1|09-01|SingleLinkedList|Delete|❌|✅|❌|❌|
+|1|09-01|SingleLinkedList|Size|❌|✅|❌|❌|
+|2|09-01|DoubleLinkedList|Add|❌|✅|❌|❌|
+|2|09-01|DoubleLinkedList|Get|❌|✅|❌|❌|
+|2|09-01|DoubleLinkedList|Delete|❌|✅|❌|❌|
 |3|09-02(~15:00)|Queue|enque(add)|❌|❌|❌|❌|
 |3|09-02(~15:00)|Queue|deque|❌|❌|❌|❌|
 |3|09-02(~15:00)|Queue|size|❌|❌|❌|❌|
@@ -67,10 +67,9 @@
 |5|09-03|Tree|Delete|❌|❌|❌|❌|
 |5|09-03|Tree|Change|❌|❌|❌|❌|
 |5|09-03|Tree|Pre,In,Post|❌|❌|❌|❌|
-|6|09-03|BinarySearchTree|Add|❌|❌|❌|❌|
-|6|09-03|BinarySearchTree|Search|❌|❌|❌|❌|
-|6|09-03|BinarySearchTree|Delete|❌|❌|❌|❌|
-|6|09-03|BinarySearchTree|Change|❌|❌|❌|❌|
+|6|09-03|BinarySearchTree|Add|❌|✅|❌|❌|
+|6|09-03|BinarySearchTree|Search|❌|✅|❌|❌|
+|6|09-03|BinarySearchTree|Delete|❌|✅|❌|❌|
 |7|09-05|RedBlackTree|Add|❌|❌|❌|❌|
 |7|09-05|RedBlackTree|Search|❌|❌|❌|❌|
 |7|09-05|RedBlackTree|Delete|❌|❌|❌|❌|

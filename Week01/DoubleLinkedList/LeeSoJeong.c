@@ -151,37 +151,37 @@ node *get_node(int idx, node *list)
       printf("index out of bound!\n");
       return NULL;
     }
-  }
-  return curr;
+}
+return curr;
 }
 
 int main()
 {
-  node *list; // head node
+  node *list = NULL; // head node
 
-  while (1)
-  {
+while (1)
+{
     char s[10];
     int n, idx;
     printf("command: ");
     scanf("%s", s);
     if (!strcmp(s, "end"))
-      break;
+    break;
     else if (!strcmp(s, "create"))
     {
-      list = create_list();
+    list = create_list();
     }
     else if (!strcmp(s, "insert"))
     {
-      scanf(" %d %d", &n, &idx);
-      insert_node(n, idx, list);
+    scanf(" %d %d", &n, &idx);
+    insert_node(n, idx, list);
     }
     else if (!strcmp(s, "delete"))
     {
-      scanf(" %d", &idx);
+    scanf(" %d", &idx);
       node *delete = delete_node(idx, list);
-      if (delete)
-      {
+    if (delete)
+    {
         printf("%d (%p)\n", delete->data, delete);
         free(delete);
       }
@@ -210,9 +210,9 @@ int main()
 
   // free all
   node *curr = list;
-  printf("free ");
-  while (curr)
-  {
+printf("free ");
+while (curr)
+{
     node *tmp = curr;
     curr = curr->next;
     printf("%d ", tmp->data);

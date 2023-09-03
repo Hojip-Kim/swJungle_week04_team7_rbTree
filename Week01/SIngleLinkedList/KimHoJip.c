@@ -17,7 +17,7 @@ int sizeOf(Node *node){ // 처음 list의 노드가 가리키는것은 head임.
     }
 
     return cnt;
-    
+
 }
 
 void Add(Node *node, int data){ // 여기서 들어오는 node는 처음 head를 가리킴.
