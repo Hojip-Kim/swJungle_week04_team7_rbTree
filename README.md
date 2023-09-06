@@ -70,9 +70,12 @@
 |6|09-03|BinarySearchTree|Add|❌|✅|❌|❌|
 |6|09-03|BinarySearchTree|Search|❌|✅|❌|❌|
 |6|09-03|BinarySearchTree|Delete|❌|✅|❌|❌|
-|7|09-05|RedBlackTree|Add|❌|❌|❌|❌|
-|7|09-05|RedBlackTree|Search|❌|❌|❌|❌|
-|7|09-05|RedBlackTree|Delete|❌|❌|❌|❌|
-|7|09-05|RedBlackTree|Change|❌|❌|❌|❌|
-
+|7|09-05|RedBlackTree|new_rbtree|❌|✅|❌|❌|
+|7|09-05|RedBlackTree|delete_rbtree|❌|✅|❌|❌|
+|7|09-05|RedBlackTree|rbtree_insert|❌|✅|❌|❌|
+|7|09-05|RedBlackTree|rbtree_find|❌|✅|❌|❌|
+|7|09-05|RedBlackTree|rbtree_min|❌|✅|❌|❌|
+|7|09-05|RedBlackTree|rbtree_max|❌|✅|❌|❌|
+|7|09-05|RedBlackTree|rbtree_erase|❌|✅|❌|❌|
+|7|09-05|RedBlackTree|rbtree_to_array|❌|✅|❌|❌|
 ---
