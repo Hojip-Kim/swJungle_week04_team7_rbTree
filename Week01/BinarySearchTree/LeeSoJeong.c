@@ -25,6 +25,7 @@ node_t *bstree_find(const bstree *, const key_t);
 node_t *bstree_min(const bstree *);
 node_t *bstree_max(const bstree *);
 int bstree_erase(bstree *, node_t *);
+void rbtree_rotate_right(bstree *, node_t *);
 
 int bstree_to_array(const bstree *, key_t *, const size_t);
 
@@ -92,6 +93,10 @@ int main() {
       if (!tree) continue;
       if (!tree->root) continue;
       printf("root %d %p\n", tree->root->key, tree->root);
+    } else if (!strcmp(cmd, "rotate")) {
+      if (!tree) continue;
+      if (!tree->root) continue;
+      rbtree_rotate_right(tree, tree->root);
     } else {
       printf("** use command **\n");
       printf("create delete insert find min max erase array\n");
@@ -113,6 +118,34 @@ int main() {
   free(arr);
 
   return 0;
+}
+
+// * rotate right
+void rbtree_rotate_right(bstree *tree, node_t *x) {
+  // x를 기준으로 오른쪽으로 로테이션한다
+  // y는 x의 left child
+  node_t *y = x->left;
+
+  // l sub of x -> r sub of y
+  x->left = y->right;
+  if (y->right != tree->nil) {
+    y->right->parent = x;  // connect if child exist
+  }
+
+  y->parent = x->parent;  // connect parent
+  if (x->parent == tree->nil) {
+    // x is root
+    tree->root = y;
+  } else if (x == x->parent->left) {
+    // x is left child
+    x->parent->left = y;
+  } else {
+    // x is right child
+    x->parent->right = y;
+  }
+  y->right = x;
+  x->parent = y;
+  return;
 }
 
 // * create tree
